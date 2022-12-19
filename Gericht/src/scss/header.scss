@@ -11,9 +11,14 @@
 		min-height: 121px;
 		display: flex;
 		position: relative;
+		@include adaptiveValue("min-height", 121, 50);
 	}
 		&__column {
 			flex: 0 0 310px;
+			gap: 10px;
+			@media (max-width: em(1150)){
+				flex: 0 0 200px;
+			}
 			width: 310px;	
 			&_wide{
 				flex: 1 1 auto;
@@ -26,10 +31,10 @@
 	&__logo {
 		@extend %cu;
 		font-weight: 700;
-		font-size: 44px;
 		line-height: 130%;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
+		@include adaptiveValue("font-size", 44, 25);
 	}
 
 	&__menu {
@@ -51,8 +56,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;	
-		gap: 32px;
+		row-gap: 5px;
 		justify-content: center;
+		@include adaptiveValue("column-gap", 32, 15, 1330, 768, 1);
 }
 
 	&__item {
@@ -81,13 +87,21 @@
 	display: flex;
 	align-self: stretch;
 	gap: 10px 50px;
-	padding: 22px 0;
-	justify-content: flex-end;
+	justify-content: center;
+		@media (max-width: em(1150)){
+		  flex-direction: column;
+		  align-items: flex-end;
+	}
+	@media (min-width: em(1150)) {
+		padding: 22px 0;
+		justify-content: flex-end;
+	}
 	&__item {
 		display: flex;
 		align-items: center;
 		position: relative;
-		&:not(:last-child){
+		@media (min-width: em(1150)){
+			&:not(:last-child){
 			&::before{
 				content: "";
 				position: absolute;
@@ -98,6 +112,7 @@
 				width: 1px;
 			}
 		}
+	}
 	}
 
 	&__link {
