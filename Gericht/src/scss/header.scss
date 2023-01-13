@@ -3,7 +3,10 @@
 	color: #FFFFFF;
 	padding: 10px 0;;
 	&__container {
-
+		gap: 10px;
+		@media (max-width:$mobile){
+			gap: 25px; 
+		}
 		&_wide {
 		}
 		
@@ -14,12 +17,10 @@
 		@include adaptiveValue("min-height", 121, 50);
 	}
 		&__column {
-			flex: 0 0 310px;
-			gap: 10px;
-			@media (max-width: em(1150)){
-				flex: 0 0 200px;
-			}
-			width: 310px;	
+			flex-grow: 0;
+			flex-shrink: 0;	
+			@include adaptiveValue("flex-basis", 300, 180, 1330, 768, 1);		
+			
 			&_wide{
 				flex: 1 1 auto;
 			}
@@ -34,10 +35,18 @@
 		line-height: 130%;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
-		@include adaptiveValue("font-size", 44, 25);
+		@include adaptiveValue("font-size", 44, 25, 1330, 768, 1);
 	}
 
 	&__menu {
+		@media (max-width:$mobile){
+			  position: fixed;
+			  width: 100%;
+			  height: 100%;
+			  top: 0;
+			  left: -100%;
+
+		}
 	}
 
 	&__auth {	
@@ -45,6 +54,7 @@
 	}
 }
 .menu {
+	@include adaptiveValue("font-size", 16, 12);
 
 	&__icon {
 	}
@@ -88,6 +98,7 @@
 	align-self: stretch;
 	gap: 10px 50px;
 	justify-content: center;
+	@include adaptiveValue("font-size", 16, 12);
 		@media (max-width: em(1150)){
 		  flex-direction: column;
 		  align-items: flex-end;
@@ -138,8 +149,8 @@
 	@media (max-width: $mobile) {
 		display: block;
 		position: relative;
-		width: rem(30);
-		height: rem(18);
+		flex: 0 0 38px;
+		height: rem(22.5);
 		cursor: pointer;
 		z-index: 5;
 		span,
@@ -151,7 +162,7 @@
 			position: absolute;
 			width: 100%;
 			height: rem(2);
-			background-color: #000;
+			background-color: #fff;
 		}
 		&::before {
 			top: 0;
