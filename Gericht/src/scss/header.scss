@@ -39,14 +39,7 @@
 	}
 
 	&__menu {
-		@media (max-width:$mobile){
-			  position: fixed;
-			  width: 100%;
-			  height: 100%;
-			  top: 0;
-			  left: -100%;
-
-		}
+	
 	}
 
 	&__auth {	
@@ -60,6 +53,17 @@
 	}
 
 	&__body {
+		@media (max-width:$mobile){
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: -100%;
+			.menu-open &{
+				left: 0;
+			}
+
+	 }
 	}
 
 	&__list {
