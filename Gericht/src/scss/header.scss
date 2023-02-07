@@ -31,6 +31,8 @@
 
 	&__logo {
 		@extend %cu;
+		position: relative;
+		z-index: 2;
 		font-weight: 700;
 		line-height: 130%;
 		letter-spacing: 0.04em;
@@ -55,12 +57,30 @@
 	&__body {
 		@media (max-width:$mobile){
 			position: fixed;
+			overflow: auto;
 			width: 100%;
 			height: 100%;
 			top: 0;
 			left: -100%;
+			transition: left 0.3s ease 0s;
+			background-color: #0c0c0c;
+			@include adaptiveValue("padding-top", 170, 100);
+			padding-bottom: rem(30);
+			&::before{
+				content: "";
+				position: fixed;
+				top: 0;
+				width: 100%;
+				left: -100%;
+				transition: left 0.3s ease 0s;
+				background-color: #000;
+				@include adaptiveValue("height", 141, 70);
+			}
 			.menu-open &{
 				left: 0;
+				&::before{
+					left: 0;
+				}
 			}
 
 	 }
@@ -73,6 +93,10 @@
 		row-gap: 5px;
 		justify-content: center;
 		@include adaptiveValue("column-gap", 32, 15, 1330, 768, 1);
+		@media (max-width:$mobile){
+			flex-direction: column;
+			&:not(:last-child) {margin-bottom: rem(50);}		  
+		}
 }
 
 	&__item {
@@ -87,6 +111,9 @@
 			&:hover{
 				color: $mainHover;
 			}
+		}
+		@media (max-width:$mobile){
+			 font-size: rem(25);
 		}
 	}
 }
@@ -111,6 +138,10 @@
 		padding: 22px 0;
 		justify-content: flex-end;
 	}
+	@media (max-width:$mobileSmall){
+		align-items: center;
+		font-size: rem(25);
+ }
 	&__item {
 		display: flex;
 		align-items: center;
